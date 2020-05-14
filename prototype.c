@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 
-    typedef struct{
-        char date[1024];
-        char death[1024];
-    } Info;
+//struct that contains the information needed from each line of the input
+typedef struct{
+    char date[1024];
+    char cases[1024];
+} Info;
 
 /**
  * Extracts a selection of string and return a new string or NULL.
@@ -56,18 +58,11 @@ str_slice(char str[], int slice_from, int slice_to)
     return buffer;
 }
 
+//gets a raw csv file and manipulates it to get the wanted information to proceed
+//(the specific format of the csv is already excpected)
+void csvToData( FILE* fp, Info info[1]) {
 
-void csvToData(Info info[1]) {
-
-    FILE *fp = fopen("input.csv", "r");
-
-    if (!fp) {
-        printf("Can't open file\n");
-        return;
-    }
-
-
-    //ver quantas linhas tem no arquivo para poder, na mesma leitura, pegar o ultimo valor de mortes e de 7 dias anteriores
+    //see how much line there is on the file in order to get, at the same reading, both dates needed
     int count = 0;
     char c;
     // Extract characters from file and store in character c 
@@ -77,7 +72,7 @@ void csvToData(Info info[1]) {
         } 
     }   
 
-    //voltar a stream de leitura para o inicio do arquivo
+    //reading stream goes back to the beggining of the file
     rewind(fp);
 
     char buf[1024];
@@ -85,31 +80,36 @@ void csvToData(Info info[1]) {
     int field_count = 0;
 
 
-    //le ate o final do arquivo para pegar o ultimo valor
+    /*goes to the final line - 6 and the final line itself,
+     stores the date field and the cases toll field on the struct 'info' vector with size 2*/
     while (fgets(buf, 1024, fp)) {
         field_count = 0;
         row_count++;
 
-        //primeira linha apenas define os campos, nao ha valor de fato
+        //first line doesnt have data, just defines what goes in each column
         if (row_count == 1) {
             continue;
         }
 
         char *field = strtok(buf, ",");
         while (field) {
+            //we count the field to know if we are reading a date or a cases toll
             if (field_count == 0) {
+                //first we check if it is a field of the 6 days earlier day
                 if(row_count == (count - 6)){
                     strcpy(info[0].date, str_slice(field, 5, 10));
+                //or from the latest day
                 } else if (row_count == count){
                     strcpy(info[1].date, str_slice(field, 5, 10));
                 }
 
             }
+
             if (field_count == 1) {
                if(row_count == (count - 6)){
-                    strcpy(info[0].death, field);
+                    strcpy(info[0].cases, field);
                 } else if (row_count == count){
-                    strcpy(info[1].death, field);
+                    strcpy(info[1].cases, field);
                 }              
             }
 
@@ -128,12 +128,37 @@ void csvToData(Info info[1]) {
 
 }
 
+//calculating r0 based on this brasilian article calculus:
+// https://hal.archives-ouvertes.fr/hal-02509142v2/file/epidemie_pt.pdf
+double rCalculus(Info data[1]){
+    
+    double initial_cases = strtod(data[0].cases, NULL);
+    double final_cases = strtod(data[1].cases, NULL);
+
+    double r0 = final_cases / initial_cases;
+    r0 = log(r0);
+    r0 = r0 / 7;
+    r0 = (1 + r0/0.25) * (r0 + 1);
+
+    return r0;
+}
+
 int main(){
     
     Info data[1];
-    csvToData(data);
 
-    printf("%s\n", data[0].death); //testando função
+    FILE *fp = fopen("input.csv", "r");
+
+    if (!fp) {
+        printf("Can't open file\n");
+        return 1;
+    }
+
+    csvToData(fp, data);
+
+    double r0 = rCalculus(data);
+
+    printf("\n\nO R0 de Sorocaba atualmente é:\n  --  %.2f  --\n\n", r0);
     
     return 0;
 }
