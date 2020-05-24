@@ -20,17 +20,17 @@
             
             //gets a raw csv file and manipulates it to get the wanted information to proceed
             //(the specific format of the csv is already excpected)
-            function csvToData( $handle , &$info) {
+            function csvToData( $cache , &$info) {
 
                 //see how much line there is on the file in order to get, at the same reading, both dates needed
                 $count = 0;
-                while(!feof($handle)){
-                    $line = fgets($handle);
+                while(!feof($cache)){
+                    $line = fgets($cache);
                     $count++;
                 }
 
                 //reading stream goes back to the beggining of the file
-                rewind($handle);
+                rewind($cache);
 
                 $buf;
                 $row_count = 0;
@@ -39,7 +39,7 @@
 
                 /*goes to the final line - 6 and the final line itself,
                 stores the date and the cases toll on the vector 'info'*/
-                while ($buf = fgets($handle, 65535)) {
+                while ($buf = fgets($cache, 65535)) {
                     $field_count = 0;
                     $row_count++;
 
@@ -50,7 +50,7 @@
                         //we count the field to know if we are reading a date or a cases toll
                         if ($field_count == 0) {
                             // we check if it is a field of the latest day
-                            if ($row_count == $count - 1){ //unexpected error if using count without subtracting 1
+                            if ($row_count == $count){
                                 $info["date"] = substr ($field, 5 , 5 ); //just the month and day
                             }
 
@@ -59,9 +59,9 @@
                         if ($field_count == 1) {
                         //this is a cases toll field
 
-                            if($row_count == ($count - 7)){//from the previous week
+                            if($row_count == ($count - 6)){//from the previous week
                                 $info["cases0"] = $field;
-                            } else if ($row_count == $count - 1){//from the latest day
+                            } else if ($row_count == $count){//from the latest day
                                $info["cases1"] = $field;
                             }              
                         }
@@ -74,8 +74,6 @@
                     }
                 }
 
-
-                fclose($handle);
 
             }
 
@@ -95,15 +93,24 @@
             }
 
 
+            //first, open the url provided by the town hall with the wanted .csv file
+            //opens also a cache resource in order to rewind the buffer ( resources of external url are not able to do so)
+            //copy the url stream to the cache stream
+            //then $cache will be at the end of the stream after calling stream_copy_to_stream, so we rewind it 
+            $remoteResource = fopen("http://servicos.sorocaba.sp.gov.br/metabase/public/question/c49a0ea6-c617-491c-81d8-3862bcc639f7.csv", "r");
+            $cache = fopen('php://temp', 'r+');
+            stream_copy_to_stream($remoteResource, $cache);
+            rewind($cache);
 
 
-            $handle = fopen("input.csv", "r");
-
-            if (!$handle) {
+            if (!$cache) {
                 echo "Can't open file";
             }
 
-            csvToData($handle, $info);
+            csvToData($cache, $info);
+
+            fclose($remoteResource);
+            fclose($cache);
 
             $r0 = rCalculus($info);
 
