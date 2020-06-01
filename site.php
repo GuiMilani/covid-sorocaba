@@ -1,8 +1,15 @@
-<html>
+<html lang="pt-br">
+
+
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Site que calcula R0 na cidade de Sorocaba">
+        <meta name="keywords" content="sorocaba, covid, r0, pinto">
         <title></title>
     </head>
+
+
     <body>
 
         <?php
@@ -114,7 +121,7 @@
 
             $r0 = rCalculus($info);
 
-            $r0 = sprintf("%.2f", $r0);
+            $r0 = sprintf("%.2f", $r0); //formatting the r0
 
             echo "R0 em Sorocaba no dia ", $info["date"], " é: ", $r0;
         
@@ -123,5 +130,7 @@
         ?>
 
     </body>
+
+
 
 </html>
