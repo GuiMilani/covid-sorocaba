@@ -11,6 +11,7 @@
     <body>
         <p>Aviso: este site é amador e os dados são apenas aproximações matemáticas</p>
 
+        <h1>O R0 é 
         <?php
 
         
@@ -122,13 +123,12 @@
 
             $r0 = sprintf("%.2f", $r0); //formatting the r0
 
-            echo "R0 em Sorocaba no dia ", $info["date"], " é: ", $r0;
+            echo /*"R0 em Sorocaba no dia ", $info["date"], " é: ",*/ $r0;
         
 
 
         ?>
-
-        <h1>O R0 em dd/mm é XX</h1>
+        </h1>
 
         <h2>O que é o R0?</h2>
         <p>É o número de pessoas infectadas a partir de um único indivíduo infectado por Covid-19</p>
