@@ -1,6 +1,5 @@
 <html lang="pt-br">
 
-
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +8,8 @@
         <title>covid Sorocaba</title>
     </head>
 
-
     <body>
+        <p>Aviso: este site é amador e os dados são apenas aproximações matemáticas</p>
 
         <?php
 
@@ -129,8 +128,15 @@
 
         ?>
 
+        <h1>O R0 em dd/mm é XX</h1>
+
+        <h2>O que é o R0?</h2>
+        <p>É o número de pessoas infectadas a partir de um único indivíduo infectado por Covid-19</p>
+
+        <footer>
+            <p>Contribuintes: Guilherme Milani, Gabriel Kyomen</p>
+            <p>Link para o repositório: <a href="https://github.com/GuiMilani/covid-sorocaba">GuiMilani/covid-sorocaba</a></p>
+            <p>Referência</p>
+        </footer>
     </body>
-
-
-
 </html>
