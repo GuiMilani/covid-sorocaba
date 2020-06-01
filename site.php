@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Site que calcula R0 na cidade de Sorocaba">
         <meta name="keywords" content="sorocaba, covid, r0, pinto">
-        <title></title>
+        <title>covid Sorocaba</title>
     </head>
 
 
