@@ -1,0 +1,15 @@
+body{
+    background: rgb(107, 107, 107);
+    font-size: 1.15em;
+    text-align: justify;
+    font-family: Arial, sans-serif;
+}
+
+#value{
+    text-align: center;
+}
+
+#disclaimer{
+    color: white;
+    background: rgb(224, 67, 67);
+}

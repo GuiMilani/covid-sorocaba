@@ -1,17 +1,18 @@
 <html lang="pt-br">
 
     <head>
+        <link rel="stylesheet" type="text/css" href="../css/style.css">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Site que calcula R0 na cidade de Sorocaba">
-        <meta name="keywords" content="sorocaba, covid, r0, pinto">
+        <meta name="keywords" content="sorocaba, covid, r0, infecção">
         <title>covid Sorocaba</title>
     </head>
 
     <body>
-        <p>Aviso: este site é amador e os dados são apenas aproximações matemáticas</p>
+        <p id="disclaimer">Aviso: este site é amador e os dados são apenas aproximações matemáticas</p>
 
-        <h1>O R0 é 
+        <h1 id="value">O R0 é 
         <?php
 
         
