@@ -124,7 +124,7 @@
 
             $r0 = sprintf("%.2f", $r0); //formatting the r0
 
-            echo /*"R0 em Sorocaba no dia ", $info["date"], " é: ",*/ $r0;
+            echo $r0;
         
 
 
@@ -135,7 +135,7 @@
         <p>É o número de pessoas infectadas a partir de um único indivíduo infectado por Covid-19</p>
 
         <footer>
-            <p>Contribuintes: Guilherme Milani, Gabriel Kyomen</p>
+            <p>Contribuintes: Guilherme Milani, Gabriel Kyomen, Marcos Santana</p>
             <p>Link para o repositório: <a href="https://github.com/GuiMilani/covid-sorocaba">GuiMilani/covid-sorocaba</a></p>
             <p>Referência</p>
         </footer>
