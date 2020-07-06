@@ -1,11 +1,14 @@
 
 <?php
-//array that contains the information needed to calculate the R0 and record the date
+
+//array that contains the information needed to calculate the R0, record the date, and store all the previous calculated r0
 
 $info = array(
     "date" => NULL,
-    "cases0" => NULL,
-    "cases1" => NULL,
+    "casesStart" => NULL,
+    "casesEnd" => NULL,
+    "r0" => array( "0" => NULL
+    ),
 );
 
 
@@ -52,9 +55,9 @@ function csvToData( $cache , &$info) {
             //this is a cases toll field
 
                 if($row_count == ($count - 6)){//from the previous week
-                    $info["cases0"] = $field;
+                    $info["casesStart"] = $field;
                 } else if ($row_count == $count){//from the latest day
-                   $info["cases1"] = $field;
+                   $info["casesEnd"] = $field;
                 }              
             }
 
@@ -71,10 +74,10 @@ function csvToData( $cache , &$info) {
 
 //calculating r0 based on this brasilian article calculus:
 // https://hal.archives-ouvertes.fr/hal-02509142v2/file/epidemie_pt.pdf
-function rCalculus($info){
+function calculateR0($info){
     
-    $initial_cases = $info["cases0"];
-    $final_cases = $info["cases1"];
+    $initial_cases = $info["casesStart"];
+    $final_cases = $info["casesEnd"];
 
     $r0 = $final_cases / $initial_cases;
     $r0 = log($r0);
@@ -84,29 +87,33 @@ function rCalculus($info){
     return $r0;
 }
 
+function getR0(){
 
-//first, open the url provided by the town hall with the wanted .csv file
-//opens also a cache resource in order to rewind the buffer ( resources of external url are not able to do so)
-//copy the url stream to the cache stream
-//then $cache will be at the end of the stream after calling stream_copy_to_stream, so we rewind it 
-$remoteResource = fopen("http://servicos.sorocaba.sp.gov.br/metabase/public/question/c49a0ea6-c617-491c-81d8-3862bcc639f7.csv", "r");
-$cache = fopen('php://temp', 'r+');
-stream_copy_to_stream($remoteResource, $cache);
-rewind($cache);
+    //first, open the url provided by the town hall with the wanted .csv file
+    //opens also a cache resource in order to rewind the buffer ( resources of external url are not able to do so)
+    //copy the url stream to the cache stream
+    //then $cache will be at the end of the stream after calling stream_copy_to_stream, so we rewind it 
+    $remoteResource = fopen("http://servicos.sorocaba.sp.gov.br/metabase/public/question/c49a0ea6-c617-491c-81d8-3862bcc639f7.csv", "r");
+    $cache = fopen('php://temp', 'r+');
+    stream_copy_to_stream($remoteResource, $cache);
+    rewind($cache);
 
 
-if (!$cache) {
-    echo "Can't open file";
+    if (!$cache) {
+        echo "Can't open file";
+    }
+
+    csvToData($cache, $info);
+
+    fclose($remoteResource);
+    fclose($cache);
+
+    $r0 = calculateR0($info);
+
+    $r0 = sprintf("%.2f", $r0); //formatting the r0
+
+    return $r0;
 }
-
-csvToData($cache, $info);
-
-fclose($remoteResource);
-fclose($cache);
-
-$r0 = rCalculus($info);
-
-$r0 = sprintf("%.2f", $r0); //formatting the r0
 
 ?>
 

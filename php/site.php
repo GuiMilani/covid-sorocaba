@@ -13,7 +13,7 @@
     <body>
         <p id="disclaimer">Aviso: este site é amador e os dados são apenas aproximações matemáticas</p>
 
-        <h1 id="value">O R0 é <?php echo $r0; ?>
+        <h1 id="value">O R0 é <?php echo getR0(); ?>
         </h1>
 
         <h2>O que é o R0?</h2>
