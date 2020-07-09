@@ -1,16 +1,13 @@
 
 <?php
 
-//array that contains the information needed to calculate the R0, record the date, and store all the previous calculated r0
+//array that contains the information needed to calculate the R0 and record the date
 
 $info = array(
     "date" => NULL,
     "casesStart" => NULL,
     "casesEnd" => NULL,
-    "r0" => array( "0" => NULL
-    ),
 );
-
 
 
 //gets a raw csv file and manipulates it to get the wanted information to proceed
@@ -69,7 +66,6 @@ function csvToData( $cache , &$info) {
         }
     }
 
-
 }
 
 //calculating r0 based on this brasilian article calculus:
@@ -86,6 +82,7 @@ function calculateR0($info){
 
     return $r0;
 }
+
 
 function getR0(){
 
@@ -112,7 +109,32 @@ function getR0(){
 
     $r0 = sprintf("%.2f", $r0); //formatting the r0
 
+    store_r0($r0, $info);
+
     return $r0;
+}
+
+
+function store_r0($r0, $info){
+
+    $url = 'r0_values.json'; // path to JSON file
+    $data = file_get_contents($url); // put the contents of the file into a variable
+    $data = json_decode($data); // decode the JSON feed
+ 
+    $n = $data->n_stored_values; // get the number of previous values calculated in order to add one more at the end of the .json 
+    
+    if($data->r0[$n]->date == $info['date']){ // just store the newest values if it is a new day
+
+        $data->r0[$n]->date = $info['date']; // goes to the list that contains previous values and add the newest date in the end
+
+        $data->r0[$n]->value = $r0; // does the same but with the r0 number
+        $data->n_stored_values += 1; // add one to the counter for the next iteration
+
+        $data = json_encode($data); // encodes the new info to the json format
+
+        file_put_contents($url, $data); // refresh the file
+    }
+
 }
 
 ?>
