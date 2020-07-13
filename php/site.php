@@ -53,7 +53,7 @@ include 'api.php'; ?>
     </div>
 
     <footer>
-        <p>Contribuintes: Guilherme Milani, Gabriel Kyomen, Marcos Santana</p>
+        <p>Contribuintes: Guilherme Milani, Gabriel Kyomen, Marcos Santana, Jean Wylmer</p>
         <p>Link para o repositório:
             <a href="https://github.com/GuiMilani/covid-sorocaba">GuiMilani/covid-sorocaba</a>
         </p>
