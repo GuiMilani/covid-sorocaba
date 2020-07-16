@@ -1,0 +1,64 @@
+<?php
+include 'api.php'; ?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>covid Sorocaba</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site que calcula R0 na cidade de Sorocaba">
+    <meta name="keywords" content="sorocaba, covid, r0, infecção">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+</head>
+
+<body>
+    <main>
+        <h1 class="title">R0 COVID-19 Sorocaba</h1>
+        <div class="container">
+            <h2>O que é o R0?</h2>
+            <p>
+                O R0 nos diz o número de indivíduos que serão contaminados a partir de um indivíduo
+                infectado que servirá como fonte do agente infeccioso.
+                O R0 é calculado quando se tem uma população não vacinada,
+                sem contato prévio com o patógeno e quando não há formas de controlar sua dispersão.
+                O “novo coronavírus” SARS-CoV-2 se encaixa perfeitamente nestes pré-requisitos.
+            </p>
+
+            <p>
+                Para que possamos entender melhor a relação entre o valor do
+                R0 e as consequências em termos de doenças infecto-contagiosas,
+                veja as diferentes possibilidades abaixo:
+            </p>
+            <ol>
+                <li><a>Se o R0 for menor que 1:</a> isto significa que cada indivíduo infectado gerará menos que um outro indivíduo infectado. A chance de transmissão é muito baixa e a doença tenderá a decair e a desaparecer.</li>
+                <li><a>Se o R0 for igual a 1:</a> neste caso, cada indivíduo infectado causa uma nova infecção e a doença permanecerá, pois será transmitida de indivíduo em indivíduo, de forma estável, sem que ocorra uma epidemia. A doença pode permanecer na mesma região ou população por longos períodos de tempo.</li>
+                <li><a>Se o R0 for maior que 1:</a> aqui a situação fica mais preocupante porque cada indivíduo infectado causa mais que uma nova infecção, isto é, infecta mais que um indivíduo. Nestes casos, ocorrerá um surto, uma epidemia ou uma pandemia. Quanto mais elevado o valor do R0, maior será a transmissibilidade e maior será a população potencialmente afetada pelo agente infeccioso.</li>
+            </ol>
+        </div>
+    </main>
+    <div class="container">
+        <h3 id="value">O R0 atual de sorocaba é
+            <a class=<?php $r0 = getR0();
+                        if ($r0 > 1) {
+                            echo "danger-color";
+                        } else {
+                            echo "safe-color";
+                        } ?>><?= $r0 ?></a></h3>
+        <div class="alert bg-color-red">
+            <p><a>Aviso:</a> este site é amador e os dados são apenas aproximações matemáticas</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Contribuintes: Guilherme Milani, Gabriel Kyomen, Marcos Santana, Jean Wylmer</p>
+        <p>Link para o repositório:
+            <a href="https://github.com/GuiMilani/covid-sorocaba">GuiMilani/covid-sorocaba</a>
+        </p>
+        <p>Referência</p>
+    </footer>
+</body>
+
+</html>
