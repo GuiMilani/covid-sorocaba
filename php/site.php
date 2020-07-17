@@ -15,16 +15,32 @@ include 'api.php'; ?>
 </head>
 
 <body>
+    <header>
+        <div class="alert bg-color-red">
+            <p><a>Aviso:</a> este site é amador e os dados são apenas aproximações matemáticas.</p>
+        </div>
+    </header>
+
     <main>
-        <h1 class="title">R0 COVID-19 Sorocaba</h1>
+        <div class="container">
+            <h1 id="value">O R0 atual de Sorocaba é
+                <a class=<?php $r0 = getR0();
+                            if ($r0 > 1) {
+                                echo "danger-color";
+                            } else {
+                                echo "safe-color";
+                            } ?>><?= $r0 ?>
+                </a>
+            </h1>
+        </div>
         <div class="container">
             <h2>O que é o R0?</h2>
             <p>
-                O R0 nos diz o número de indivíduos que serão contaminados a partir de um indivíduo
-                infectado que servirá como fonte do agente infeccioso.
+                O Número Básico de Reprodução, mais conhecido como R0, nos diz o número de pessoas que serão contaminadas a partir de um único indivíduo
+                infectado, que servirá como fonte da doença.
                 O R0 é calculado quando se tem uma população não vacinada,
                 sem contato prévio com o patógeno e quando não há formas de controlar sua dispersão.
-                O “novo coronavírus” SARS-CoV-2 se encaixa perfeitamente nestes pré-requisitos.
+                O “novo coronavírus” SARS-CoV-2 se encaixa nestes pré-requisitos.
             </p>
 
             <p>
@@ -39,18 +55,6 @@ include 'api.php'; ?>
             </ol>
         </div>
     </main>
-    <div class="container">
-        <h3 id="value">O R0 atual de sorocaba é
-            <a class=<?php $r0 = getR0();
-                        if ($r0 > 1) {
-                            echo "danger-color";
-                        } else {
-                            echo "safe-color";
-                        } ?>><?= $r0 ?></a></h3>
-        <div class="alert bg-color-red">
-            <p><a>Aviso:</a> este site é amador e os dados são apenas aproximações matemáticas</p>
-        </div>
-    </div>
 
     <footer>
         <p>Contribuintes: Guilherme Milani, Gabriel Kyomen, Marcos Santana, Jean Wylmer</p>

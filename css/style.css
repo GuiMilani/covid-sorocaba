@@ -14,6 +14,14 @@ body{
     font-weight: 300;
 }
 
+header{
+    padding: 1rem 1rem;
+    position: static;
+    bottom: 0;
+    width: 100vw;
+    text-align: justify;
+}
+
 .title{
     text-align: center;
 }
@@ -35,8 +43,9 @@ body{
 .container{
     margin-left: 2rem;
     margin-right: 2rem;
-    padding-left: 4rem;
-    padding-right: 4rem;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 #value{
@@ -68,11 +77,12 @@ ol li a{
 .safe-color{
     color:#73DC5B;
 }
+
 footer{
     background-color: #011627;
     color: #FDFFFC;
     padding: 2rem 3rem;
-    position: fixed;
+    position: static;
     bottom: 0;
     width: 100vw;
 }

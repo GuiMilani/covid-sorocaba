@@ -129,3 +129,20 @@ function store_r0($r0, $info)
         file_put_contents($url, $data); // refresh the file
     }
 }
+
+function get_date(){
+    $url = 'r0_values.json'; // path to JSON file
+    $data = new \stdClass;
+    $data = file_get_contents($url); // put the contents of the file into a variable
+    $data = json_decode($data); // decode the JSON feed
+
+    $n = $data->n_stored_values; // get the number of previous values calculated in order to add one more at the end of the .json
+
+    $date = array();
+
+    for($i = 0; $i < $n; $i += 1){
+        $date[$i] = $data->r0[$i]->date;
+    }
+
+    return $date;
+}
