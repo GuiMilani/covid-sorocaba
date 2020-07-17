@@ -18,7 +18,7 @@ header{
     padding: 1rem 1rem;
     position: static;
     bottom: 0;
-    width: 100vw;
+    width: 100%;
     text-align: justify;
 }
 
@@ -41,11 +41,17 @@ header{
 }
 
 .container{
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-bottom: 2rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    width: 100%;
+}
+
+.graph{
     margin-bottom: 2rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    width: 100%;
 }
 
 #value{
@@ -84,5 +90,13 @@ footer{
     padding: 2rem 3rem;
     position: static;
     bottom: 0;
-    width: 100vw;
+    width: 100%;
+}
+
+@media (min-width:768px){
+    .graph canvas{
+        width:800px!important;
+        height:480px!important;
+        margin-left: 2rem;
+    }
 }
