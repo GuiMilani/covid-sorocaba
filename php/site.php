@@ -12,6 +12,8 @@ include 'api.php'; ?>
     <meta name="keywords" content="sorocaba, covid, r0, infecção">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
 </head>
 
 <body>
@@ -54,6 +56,82 @@ include 'api.php'; ?>
                 <li><a>Se o R0 for maior que 1:</a> aqui a situação fica mais preocupante porque cada indivíduo infectado causa mais que uma nova infecção, isto é, infecta mais que um indivíduo. Nestes casos, ocorrerá um surto, uma epidemia ou uma pandemia. Quanto mais elevado o valor do R0, maior será a transmissibilidade e maior será a população potencialmente afetada pelo agente infeccioso.</li>
             </ol>
         </div>
+
+        <div class="container">
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <script>
+            let myChart = document.getElementById('myChart').getContext('2d');
+
+            // Global Options
+            Chart.defaults.global.defaultFontFamily = 'Lato';
+            Chart.defaults.global.defaultFontSize = 18;
+            Chart.defaults.global.defaultFontColor = '#777';
+
+            var xmlhttp = new XMLHttpRequest();
+            var url = "r0_values.json";
+
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var myArr = JSON.parse(this.responseText);
+                    
+
+                    var label = [];
+                    var y = [];
+                    for(const x of myArr['r0']){
+                        label.push(x['date'])
+                        y.push(x['value'])
+                    }
+
+
+                    let lineChart = new Chart(myChart, {
+                            type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                            data:{
+                                labels: label,
+                                datasets:[{
+                                label:'Dia',
+                                data: y
+                                }]
+                            },
+                            options:{
+                                title:{
+                                display:true,
+                                text:'Valores R0 pelo tempo',
+                                fontSize:25
+                                },
+                                legend:{
+                                display:true,
+                                position:'right',
+                                labels:{
+                                    fontColor:'#000'
+                                }
+                                },
+                                layout:{
+                                padding:{
+                                    left:50,
+                                    right:0,
+                                    bottom:0,
+                                    top:0
+                                }
+                                },
+                                tooltips:{
+                                enabled:true
+                                }
+                            }
+                            });
+                    
+
+
+                }
+            };
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+
+           
+        </script>
+
+
     </main>
 
     <footer>
