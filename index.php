@@ -38,8 +38,9 @@ include 'api.php'; ?>
         <div class="container">
             <br><h2>O que é o R0?</h2><br>
             <p>
-                O Número Básico de Reprodução, mais conhecido como R0, nos diz o número de pessoas que serão contaminadas a partir de um único indivíduo
-                infectado, que servirá como fonte da doença.
+                O Número Básico de Reprodução, mais conhecido como R0, nos diz o número de pessoas que irão contrair a doença a partir de uma única
+                pessoa que já está com o vírus, ou seja, este indivíduo contaminado servirá como fonte da doença. Por exemplo,
+                se o R0 é estimado em dois, cada pessoa doente transmitirá para outras duas aproximadamente.
                 O R0 é calculado quando se tem uma população não vacinada,
                 sem contato prévio com o patógeno e quando não há formas de controlar sua dispersão.
                 O “novo coronavírus” SARS-CoV-2 se encaixa nestes pré-requisitos.
@@ -47,7 +48,7 @@ include 'api.php'; ?>
 
             <p>
                 Para que possamos entender melhor a relação entre o valor do
-                R0 e as consequências em termos de doenças infecto-contagiosas,
+                R0 e as consequências em termos de doenças contagiosas,
                 veja as diferentes possibilidades abaixo:
             </p><br>
             <ol>

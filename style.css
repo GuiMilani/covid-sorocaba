@@ -100,3 +100,9 @@ footer{
         margin-left: 2rem;
     }
 }
+
+@media (max-width:768px){
+    #value{
+        font-size: 1.5rem;
+    }
+}
