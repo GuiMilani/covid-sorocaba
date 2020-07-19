@@ -141,12 +141,12 @@ include 'api.php'; ?>
                 </li><br>
                 <li>
                     O R0 foi calculado utilizando como base este artigo:
-                    <a href="https://flaviovdf.github.io/covid19/">
+                    <a href="https://hal.archives-ouvertes.fr/hal-02509142v2/file/epidemie_pt.pdf">
                     Um modelo matemático da epidemia de coronavírus na França</a>
                 </li><br>
                 <li>
                     Estimativas de R0 por Estados do Brasil: 
-                    <a href="https://hal.archives-ouvertes.fr/hal-02509142v2/file/epidemie_pt.pdf">
+                    <a href="https://flaviovdf.github.io/covid19/">
                     flaviovdf.github.io/covid19/</a>
                 </li><br>
                 <li>
