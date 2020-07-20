@@ -144,7 +144,7 @@ include 'api.php'; ?>
                     <a href="https://hal.archives-ouvertes.fr/hal-02509142v2/file/epidemie_pt.pdf">
                     Um modelo matemático da epidemia de coronavírus na França</a>
                 </li><br>
-                Painel oficial com dados sobre o novo coronavírus no Brasil: 
+                <li>Painel oficial com dados sobre o novo coronavírus no Brasil: 
                 <a href="https://covid.saude.gov.br/">
                 covid.saude.gov.br</a>
                 </li><br>
