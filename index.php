@@ -8,11 +8,19 @@ include 'api.php'; ?>
     <title>COVID Sorocaba</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site que calcula R0 na cidade de Sorocaba">
-    <meta name="keywords" content="sorocaba, covid, r0, infecção">
+    <meta name="description" content="Site que calcula o Número de Reprodução Básico(R0) da COVID-19 no município de Sorocaba">
+    <meta name="keywords" content="sorocaba, Sorocaba, covid, covid-19, coronavírus, coronavirus, contaminação, dados, r0, infecção, número básico de reprodução">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+    <meta property="og:title" content="COVID-19 Sorocaba" />
+    <meta property="og:url" content="http://www.covidsorocaba.online" />
+    <meta property="og:description" content="Número de Reprodução Básico(R0) da COVID-19 em Sorocaba" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:image" content="mask.jpeg">
 
 </head>
 
@@ -38,7 +46,7 @@ include 'api.php'; ?>
         <div class="container">
             <br><h2>O que é o R0?</h2><br>
             <p>
-                O Número Básico de Reprodução, mais conhecido como R0, nos diz o número de pessoas que irão contrair a doença a partir de uma única
+                O Número Básico de Reprodução, mais conhecido como R0 (pronuncia-se "R-zero"), nos diz o número de pessoas que irão contrair a doença a partir de uma única
                 pessoa que já está com o vírus, ou seja, este indivíduo contaminado servirá como fonte da doença. Por exemplo,
                 se o R0 é estimado em dois, cada pessoa doente transmitirá para outras duas aproximadamente.
                 O R0 é calculado quando se tem uma população não vacinada,
@@ -100,7 +108,10 @@ include 'api.php'; ?>
                                 labels: label,
                                 datasets:[{
                                 label:'R0',
-                                data: y
+                                data: y,
+                                backgroundColor: [
+                                    '#184079a1'
+                                ]
                                 }]
                             },
                             options:{
