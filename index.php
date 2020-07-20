@@ -5,7 +5,7 @@ include 'api.php'; ?>
 <html lang="pt-br">
 
 <head>
-    <title>covid Sorocaba</title>
+    <title>COVID Sorocaba</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Site que calcula R0 na cidade de Sorocaba">
@@ -144,6 +144,10 @@ include 'api.php'; ?>
                     <a href="https://hal.archives-ouvertes.fr/hal-02509142v2/file/epidemie_pt.pdf">
                     Um modelo matemático da epidemia de coronavírus na França</a>
                 </li><br>
+                Painel oficial com dados sobre o novo coronavírus no Brasil: 
+                <a href="https://covid.saude.gov.br/">
+                covid.saude.gov.br</a>
+                </li><br>
                 <li>
                     Estimativas de R0 por Estados do Brasil: 
                     <a href="https://flaviovdf.github.io/covid19/">
@@ -166,7 +170,7 @@ include 'api.php'; ?>
     </main>
 
     <footer>
-        <p>Contribuintes: Guilherme Milani, Gabriel Kyomen, Marcos Santana, Jean Wylmer</p><br>
+        <p>Contribuintes: Guilherme Milani, Gabriel Kyomen, Marcos Santana e Jean Wylmer</p><br>
         <p>Link para o repositório:
             <a href="https://github.com/GuiMilani/covid-sorocaba">GuiMilani/covid-sorocaba</a>
         </p>
