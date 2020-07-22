@@ -21,7 +21,7 @@ Importamos a biblioteca [Charts.js](https://www.chartjs.org/) em JavaScript para
 5. Passamos a guardar os valores previamente calculados num arquivo JSON(r0_values.json).
 6. Estilização do site criada(style.css).
 7. Adicionamos um gráfico alimentado pelo json criado, depois o tornamos responsivo.
-8. Um domínio foi comprado e hospedado para divulgação do site com a comunidade. Pode ser encotrado em http://covidsorocaba.online até Julho de 2021.
+8. Um domínio foi comprado e hospedado para divulgação do site com a comunidade. Pode ser encontrado em http://covidsorocaba.online até Julho de 2021.
 
 ## Instalação / Execução
 
