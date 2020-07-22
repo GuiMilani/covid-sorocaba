@@ -70,4 +70,4 @@ Como ficou o gráfico na versão desktop:
 
 Atila Iamarino me respondendo no Twitter:
 
-![Imagem](https://github.com/GuiMilani/covid-sorocaba/blob/master/example-4.png)
+![Imagem](https://github.com/GuiMilani/covid-sorocaba/blob/master/example-4.jpeg)
