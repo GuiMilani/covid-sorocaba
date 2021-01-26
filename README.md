@@ -67,7 +67,3 @@ Como ficou a página inicial do site:
 Como ficou o gráfico na versão desktop:
 
 ![Imagem](https://github.com/GuiMilani/covid-sorocaba/blob/master/example-3.png)
-
-Atila Iamarino me respondendo no Twitter:
-
-![Imagem](https://github.com/GuiMilani/covid-sorocaba/blob/master/example-4.jpeg)
