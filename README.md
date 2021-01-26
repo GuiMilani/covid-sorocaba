@@ -6,21 +6,21 @@ O projeto visa calcular e projetar o Número de Reprodução Básico (R0) da COV
   
 ## Pré-requisitos e recursos utilizados
 
-Utilizamos a linguagem PHP na implementação geral do projeto, com uso também de HTML, CSS, JavaScript e JSON, além de testar o site em servidor Apache local por meio do pacote XAMPP.
-Importamos a biblioteca [Charts.js](https://www.chartjs.org/) em JavaScript para montagem de gráfico e os seguintes tutoriais como base para trechos do código:
+Foi utilizada a linguagem PHP na implementação geral do projeto, com uso também de HTML, CSS, JavaScript e JSON, além de testar o site em servidor Apache local por meio do pacote XAMPP.
+É importada a biblioteca [Charts.js](https://www.chartjs.org/) em JavaScript para montagem de gráfico e os seguintes tutoriais como base para trechos do código:
 1. [Efficiently counting the number of lines of a text file.](https://stackoverflow.com/questions/2162497/efficiently-counting-the-number-of-lines-of-a-text-file-200mb)
 2. [how to rewind() an http stream file in PHP other than fclose() and fopen() again?](https://stackoverflow.com/questions/4986335/how-to-rewind-an-http-stream-file-in-php-other-than-fclose-and-fopen-again/6518288#6518288?newreg=435a966ca5a646fca605703fa27bec30)
 3. [php.net/manual/strtok](https://www.php.net/manual/en/function.strtok)
 
 ## Passo a passo
 
-1. Passamos por um processo de pesquisa sobre o cálculo do R0 e busca de fontes de estudo epidemiológicas confiáveis. (Caso deseje mais informações sobre esse passo entre em contato com [GuiMilani](https://github.com/GuiMilani/))
+1. Processo de pesquisa sobre o cálculo do R0 e busca de fontes de estudo epidemiológicas confiáveis. (Caso deseje mais informações sobre esse passo entre em contato com [GuiMilani](https://github.com/GuiMilani/))
 2. Foi criado um protótipo em C que lia um arquivo .csv providenciado pela Prefeitura e calculava o R0.
 3. Protótipo foi transformado em código PHP e um formato base em HTML(index.php) também foi criado.
-4. Colocamos as funções que tratavam explicitamente do R0 numa API(api.php).
-5. Passamos a guardar os valores previamente calculados num arquivo JSON(r0_values.json).
+4. Funções que tratavam explicitamente do R0 colocadas numa API(api.php).
+5. Guardar os valores previamente calculados num arquivo JSON(r0_values.json).
 6. Estilização do site criada(style.css).
-7. Adicionamos um gráfico alimentado pelo json criado, depois o tornamos responsivo.
+7. Adicionado um gráfico alimentado pelo json criado, depois tornado responsivo.
 8. Um domínio foi comprado e hospedado para divulgação do site com a comunidade. Pode ser encontrado em http://covidsorocaba.online até Julho de 2021.
 
 ## Instalação / Execução
